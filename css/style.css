@@ -1,3 +1,98 @@
-.uno{
-    color: red;
+.main-bg{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../src/background.jpg");
+}
+
+.main-display{
+    width: 1100px;
+    height: 600px;
+    border-radius: 10px;
+    background-color: rgba(0, 128, 0, 0.500);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+
+.sidebar{
+    grid-row: 1/6;
+    grid-column: 1/2;
+    background-color: #fff;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: grid;
+    grid-template-rows: repeat(15, 1fr);
+    grid-template-columns: repeat(1, 1fr);
+    border-right: 3px solid rgba(0, 128, 0, 0.5);
+}
+
+.sidebar-user{
+    width: 100%;
+    height: 100%;
+    grid-row: 1/7;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-user-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+    width: 80px;
+    height: 80px;
+}
+
+.sidebar-user-name{
+    font-size: 30px;
+    color: green;
+}
+
+.sidebar-tools{
+    width: 100%;
+    height: 100%;
+    grid-row: 7/16;
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+}
+
+.sidebar-tool{
+    transition: 1s;
+    width: calc(100% - 40px);
+    color: green;
+    font-size: 20px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.sidebar-tool:hover{
+    transition: .5s;
+    background-color: rgba(0, 128, 0, 0.2);
+}
+
+.horizontal-gap{
+    height: 3px;
+    width: 80%;
+    background-color: rgba(0, 128, 0, 0.500);
+}
+
+.content{
+    grid-column: 2/5;
+    grid-row: 1/6;
+    background-color: #fff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
