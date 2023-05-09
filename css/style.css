@@ -95,4 +95,6 @@
     background-color: #fff;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
