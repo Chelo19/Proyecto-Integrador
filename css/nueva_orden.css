@@ -34,6 +34,7 @@
     flex-direction: column;
     gap: 20px;
     padding: 0px 5px;
+    cursor: pointer;
 }
 
 .nueva_orden_add_dish_select:focus{
@@ -92,9 +93,10 @@
     width: calc(100% - 40px);
     display: flex;
     justify-content: end;
+    cursor: pointer;
 }
 
-.nueva_orden_add_dish_send a{
+.nueva_orden_add_dish_send span, a{
     transition: .5s;
     text-align: center;
     padding: 2px 5px;
@@ -104,7 +106,7 @@
     border: 2px solid rgba(0, 128, 0, 0.5);
 }
 
-.nueva_orden_add_dish_send a:hover{
+.nueva_orden_add_dish_send span:hover{
     transition: .5s;
     background-color: rgba(0, 128, 0, 0.2);
 }
