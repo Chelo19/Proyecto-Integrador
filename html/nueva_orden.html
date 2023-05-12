@@ -45,25 +45,25 @@
                     <div class="nueva_orden_add_dish_container">
                         <div class="nueva_orden_add_dish_select_container">
                             <span>Platillo:</span>
-                            <select class="nueva_orden_add_dish_select">
+                            <select id="selector" class="nueva_orden_add_dish_select">
                                 <option></option>
-                                <option>Tacos de trompo</option>
-                                <option>Tacos de bistec</option>
-                                <option>Sopes</option>
-                                <option>Enchiladas</option>
-                                <option>Quesadillas</option>
+                                <option value="50">Tacos de trompo</option>
+                                <option value="60">Tacos de bistec</option>
+                                <option value="30">Sopes</option>
+                                <option value="45">Enchiladas</option>
+                                <option value="40">Quesadillas</option>
                             </select>
                         </div>
                         <div class="nueva_orden_add_dish_considerations_container">
                             <span>Consideraciones:</span>
-                            <textarea class="nueva_orden_add_dish_considerations" placeholder="Consideraciones"></textarea>
+                            <textarea id="textarea1" class="nueva_orden_add_dish_considerations" placeholder="Consideraciones"></textarea>
                         </div>
                         <div class="nueva_orden_add_dish_qty_container">
                             <span>Cantidad (por defecto es 5):</span>
-                            <input type="number" value="5">
+                            <input id="contador" type="number" value="5">
                         </div>
                         <div class="nueva_orden_add_dish_send">
-                            <a href="nueva_orden.html" >Agregar Platillo</a>
+                            <span>Agregar Platillo</span>
                         </div>
                     </div>
                 </div>
@@ -75,35 +75,11 @@
                                 <span>Precio</span>
                             </div>
                             <div class="nueva_orden_ticket_final_items">
-                                <div class="nueva_orden_ticket_final_item">
-                                    <span class="nueva_orden_ticket_final_item_name">{n} {Platillo}<span>-{Especificacion}</span></span>
-                                    <span>{Precio}</span>
-                                </div>
-                                <div class="nueva_orden_ticket_final_item">
-                                    <span class="nueva_orden_ticket_final_item_name">{n} {Platillo}<span>-{Especificacion}</span></span>
-                                    <span>{Precio}</span>
-                                </div>
-                                <div class="nueva_orden_ticket_final_item">
-                                    <span class="nueva_orden_ticket_final_item_name">{n} {Platillo}<span>-{Especificacion}</span></span>
-                                    <span>{Precio}</span>
-                                </div>
-                                <div class="nueva_orden_ticket_final_item">
-                                    <span class="nueva_orden_ticket_final_item_name">{n} {Platillo}<span>-{Especificacion}</span></span>
-                                    <span>{Precio}</span>
-                                </div>
-                                <div class="nueva_orden_ticket_final_item">
-                                    <span class="nueva_orden_ticket_final_item_name">{n} {Platillo}<span>-{Especificacion}</span></span>
-                                    <span>{Precio}</span>
-                                </div>
-                                <div class="nueva_orden_ticket_final_item">
-                                    <span class="nueva_orden_ticket_final_item_name">{n} {Platillo}<span>-{Especificacion}</span></span>
-                                    <span>{Precio}</span>
-                                </div>
                             </div>
-                            <div class="nueva_orden_ticket_final_items_title">
+                            <div id="PrecioTotal" class="nueva_orden_ticket_final_items_title">
                                 <span class="nueva_orden_ticket_final_items_title_left">Total</span>
-                                <span>${Precio}</span>
                             </div>
+                            
                         </div>
                         <div class="nueva_orden_add_dish_send">
                             <a href="nueva_orden.html">Confirmar Pedido</a>
@@ -112,5 +88,6 @@
                 </div>
             </div>
         </div>
+        <script src="../js/nueva_orden.js"></script>
     </body>
 </html>
