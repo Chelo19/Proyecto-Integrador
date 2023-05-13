@@ -4,7 +4,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Órdenes</title>
+        <title>Home</title>
+        <link rel="stylesheet" href="../css/home.css">
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/output.css">
         <link rel="stylesheet" href="../css/historial.css">
@@ -26,7 +27,7 @@
                         Inicio
                     </a>
                     <div class="horizontal-gap"></div>
-                    <a href="nueva_orden.html" class="sidebar-tool">
+                    <a href="nueva-orden.html" class="sidebar-tool">
                         Nueva Orden
                     </a>
                     <div class="horizontal-gap"></div>
@@ -39,27 +40,9 @@
                     </a>
                 </div>
             </div>
-            
             <!-- Sidebar -->
-            <!-- <div class="content">
-                <div class="titulo"><span class="titulo2">Pedidos</span></div>
-                <div class="historial">
-                    <div class="historial_dish_container">
-                        <div class="historial_dish_select_container">
-                            <span class="linea">Orden: <span class="linea2">Total</span>  <span class="linea3">Hora</span> </span>
-
-                            <hr>
-                        </div>
-                        
-                        
-                        <div class="nueva_orden_add_dish_send">
-                            <a href="nueva_orden.html" >Agregar Platillo</a>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <div class="content-history">
-                <span class="history-title">Órdenes</span>
+                <span class="history-title">Historial de Pedidos</span>
                 <div class="history-container">
                     <div class="history-container-titles" id="history-container-title1">Orden</div>
                     <div class="history-container-titles" id="history-container-title2">Total</div>
@@ -130,10 +113,12 @@
                             <span id="history-container-order-title2">{TOTAL}</span>
                             <span id="history-container-order-title3">{FECHA}</span>
                         </a>
+                        <a href="history.html" class="history-container-order">
+                            <span id="history-container-order-title1">{REFERENCIA ORDEN}</span>
+                            <span id="history-container-order-title2">{TOTAL}</span>
+                            <span id="history-container-order-title3">{FECHA}</span>
+                        </a>
                     </div>
-                </div>
-                <div class="nueva_orden_add_dish_send">
-                    <a href="nueva_orden.html" >Agregar Platillo</a>
                 </div>
             </div>
         </div>
