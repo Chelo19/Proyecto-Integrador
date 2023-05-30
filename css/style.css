@@ -19,6 +19,7 @@
     justify-content: center;
     align-items: center;
     background-image: url("../src/background.jpg");
+    position: relative;
 }
 
 .main-display{
@@ -110,4 +111,39 @@
     border-bottom-right-radius: 10px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+}
+
+.alert {
+    width: 512px;
+    padding: 16px;
+    margin: 8px;
+    max-width: 90%;
+    position: absolute;
+    top: 85%;
+    left: 65%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 5px;
+}
+  
+.alert-2-success {
+    border-left: 4px solid #2ec946;
+    background-color: rgba(255, 255, 255, .9);
+}
+  
+.alert-2-success .alert-title {
+    color: #2ec946;
+}
+
+.alert-title {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+}
+
+.alert-content {
+    margin: 0;
+    font-size: 14px;
+    font-family: "Open Sans", sans-serif;
+    color: #555555;
 }
