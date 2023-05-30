@@ -140,6 +140,10 @@
     grid-template-rows: repeat(10, 1fr);
 }
 
+.nueva_orden_ticket_final span{
+    text-align: center;
+}
+
 .nueva_orden_ticket_final_items_title{
     grid-column: 1/3;
     display: grid;
