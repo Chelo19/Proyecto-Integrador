@@ -8,6 +8,31 @@
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/output.css">
         <link rel="stylesheet" href="../css/nueva_orden.css">
+
+        <!--Si les da error, hagan lo siguiente un comentario-->
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        
+        <script>
+        
+        import { createClient } from '@supabase/supabase-js'
+
+        const supabaseUrl = 'https://vemlyvaobeituwkpsbvy.supabase.co'
+        const supabaseKey = process.env.SUPABASE_KEY
+        const supabase = createClient(supabaseUrl, supabaseKey)
+        
+        supabase
+        .from('Ordenes')
+        .select('Contenido')
+        .then(response => {
+            const data = response.data;
+            console.log(data);
+        })
+        .catch(error => {
+            console.error(error);
+        })
+        </script>
+
+        <!--Hasta aquí c:-->
     </head>
     <body class="main-bg">
         <div class="alert alert-2-success">
@@ -44,7 +69,7 @@
                 </div>
             </div>
             <!-- Sidebar -->
-            <div class="content">
+            <form id="nOrd" class="content">
                 <div class="nueva_orden_add_dish">
                     <div class="nueva_orden_add_dish_container">
                         <div class="nueva_orden_add_dish_select_container">
@@ -86,12 +111,36 @@
                             
                         </div>
                         <div class="nueva_orden_add_dish_send">
-                            <a href="nueva_orden.html">Confirmar Pedido</a>
+                            <input href="nueva_orden.html" type="submit" value="Confirmar Pedido">
+                            <!--<a href="nueva_orden.html">Confirmar Pedido</a>-->
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
-        <script src="../js/nueva_orden.js"></script>
+        <script>
+            // Capturar el evento de envío del formulario
+document.getElementById('nOrd').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
+
+  // Obtener los valores de los campos del formulario
+  const nombre = document.getElementById('nombre').value;
+  const email = document.getElementById('email').value;
+
+  // Enviar los datos a la base de datos de Supabase
+  supabase
+    .from('NOMBRE_DE_LA_TABLA')
+    .insert([{ nombre, email }])
+    .then(response => {
+      console.log('Datos enviados correctamente');
+      // Hacer algo después de enviar los datos, como redireccionar o mostrar un mensaje de éxito
+    })
+    .catch(error => {
+      console.error('Error al enviar los datos:', error);
+      // Manejar el error, como mostrar un mensaje de error al usuario
+    });
+});
+
+        </script>
     </body>
 </html>

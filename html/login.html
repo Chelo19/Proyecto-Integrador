@@ -6,6 +6,28 @@
         <link rel="stylesheet" href="../css/login.css">
         <link rel="stylesheet" href="../css/output.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Si les da error, hagan lo siguiente un comentario-->
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script>
+        import { createClient } from '@supabase/supabase-js'
+
+        const supabaseUrl = 'https://vemlyvaobeituwkpsbvy.supabase.co'
+        const supabaseKey = process.env.SUPABASE_KEY
+        const supabase = createClient(supabaseUrl, supabaseKey)
+
+        .from(Ordenes)
+        .select(Contenido)
+        .then(response => {
+            const data = response.data;
+            console.log(data);
+        })
+        .catch(error => {
+            console.error(error);
+        })
+
+        </script>
+
+        <!--Hasta aquí c:-->
         <title>Login</title>
     </head>
     <body class="login-bg">

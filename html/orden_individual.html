@@ -9,6 +9,28 @@
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/output.css">
         <link rel="stylesheet" href="../css/historial.css">
+        <!--Si les da error, hagan lo siguiente un comentario-->
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script>
+        import { createClient } from '@supabase/supabase-js'
+
+        const supabaseUrl = 'https://vemlyvaobeituwkpsbvy.supabase.co'
+        const supabaseKey = process.env.SUPABASE_KEY
+        const supabase = createClient(supabaseUrl, supabaseKey)
+
+        .from(Ordenes)
+        .select(Contenido, )
+        .then(response => {
+            const data = response.data;
+            console.log(data);
+        })
+        .catch(error => {
+            console.error(error);
+        })
+
+        </script>
+
+        <!--Hasta aquí c:-->
     </head>
     <body class="main-bg">
         <div class="main-display">
