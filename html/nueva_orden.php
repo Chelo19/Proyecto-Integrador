@@ -1,3 +1,18 @@
+<?php
+$host = 'localhost';
+$username = 'root';
+$password = '';
+$database = 'Proint';
+
+// Conexión a la base de datos
+$conn = mysqli_connect($host, $username, $password, $database);
+
+// Verificar la conexión
+if (!$conn) {
+    die('Error al conectar a la base de datos: ' . mysqli_connect_error());
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -51,19 +66,19 @@
                     </div>
                 </div>
                 <div class="sidebar-tools">
-                    <a href="home.html" class="sidebar-tool">
+                    <a href="home.php" class="sidebar-tool">
                         Inicio
                     </a>
                     <div class="horizontal-gap"></div>
-                    <a href="nueva_orden.html" class="sidebar-tool">
+                    <a href="nueva_orden.php" class="sidebar-tool">
                         Nueva Orden
                     </a>
                     <div class="horizontal-gap"></div>
-                    <a href="ordenes.html" class="sidebar-tool">
+                    <a href="ordenes.php" class="sidebar-tool">
                         Órdenes
                     </a>
                     <div class="horizontal-gap"></div>
-                    <a href="history.html" class="sidebar-tool">
+                    <a href="history.php" class="sidebar-tool">
                         Historial
                     </a>
                 </div>

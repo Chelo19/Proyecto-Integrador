@@ -1,3 +1,18 @@
+<?php
+$host = 'localhost';
+$username = 'root';
+$password = '';
+$database = 'Proint';
+
+// Conexión a la base de datos
+$conn = mysqli_connect($host, $username, $password, $database);
+
+// Verificar la conexión
+if (!$conn) {
+    die('Error al conectar a la base de datos: ' . mysqli_connect_error());
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -35,18 +50,6 @@
     </head>
 
     <body class="main-bg">
-        <?php
-            $sql = 'SELECT Usuario, Contraseña FROM Usuarios'
-            $resultado = mysqli_query($conn, $sql);
-            while ($fila = mysqli_fetch_assoc($resultado)) {
-                echo 'Columna1: ' . $fila['Usuario'] . ', Columna2: ' . $fila['Contraseña'] . '<br>';
-            }
-
-            mysqli_free_result($resultado);
-
-            // Cerrar la conexión
-            mysqli_close($conn);
-        ?>
         <div class="main-display">
             <!-- Sidebar -->
             <div class="sidebar">
@@ -59,27 +62,47 @@
                     </div>
                 </div>
                 <div class="sidebar-tools">
-                    <a href="home.html" class="sidebar-tool">
+                    <a href="home.php" class="sidebar-tool">
                         Inicio
                     </a>
                     <div class="horizontal-gap"></div>
-                    <a href="nueva_orden.html" class="sidebar-tool">
+                    <a href="nueva_orden.php" class="sidebar-tool">
                         Nueva Orden
                     </a>
                     <div class="horizontal-gap"></div>
-                    <a href="ordenes.html" class="sidebar-tool">
+                    <a href="ordenes.php" class="sidebar-tool">
                         Órdenes
                     </a>
                     <div class="horizontal-gap"></div>
-                    <a href="history.html" class="sidebar-tool">
+                    <a href="history.php" class="sidebar-tool">
                         Historial
                     </a>
                 </div>
             </div>
             <!-- Sidebar -->
             <div class="content">
-                
+            <form action="php/conexion.php" method="POST" class="content">
+            <div class="nueva_orden_add_dish">
+                    <div class="nueva_orden_add_dish_container">
+                        <div class="nueva_orden_add_dish_select_container">
+                            <span>Iniciar Sesión</span>
+                            <input type="text" name="user" id="user" placeholder="Usuario">
+                        </div>
+                        <div class="nueva_orden_add_dish_considerations_container">
+                            <span>Consideraciones:</span>
+                            <textarea id="textarea1" class="nueva_orden_add_dish_considerations" placeholder="Consideraciones"></textarea>
+                        </div>
+                        <div class="nueva_orden_add_dish_qty_container">
+                            <span>Cantidad (por defecto es 5):</span>
+                            <input id="contador" type="number" value="5">
+                        </div>
+                        <div class="nueva_orden_add_dish_send">
+                            <span>Agregar Platillo</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+            </form>
         </div>
     </body>
 </html>
