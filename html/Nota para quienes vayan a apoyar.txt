@@ -1,0 +1,4 @@
+Si van a hacer algo en el HTML, por si acaso haganlo en los archivos HTML, si les funciona entonces pasenlo a los archivos PHP, de lo contrario no cambien los PHP
+
+Probablemente les de error los PHP porque no tienen la conexión a la base de datos, por eso si van a hacer algo haganlo en
+los HTML
