@@ -23,32 +23,20 @@ if (!$conn) {
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/output.css">
         <link rel="stylesheet" href="../css/nueva_orden.css">
-
-        <!--Si les da error, hagan lo siguiente un comentario-->
-        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-        
-        <script>
-        
-        import { createClient } from '@supabase/supabase-js'
-
-        const supabaseUrl = 'https://vemlyvaobeituwkpsbvy.supabase.co'
-        const supabaseKey = process.env.SUPABASE_KEY
-        const supabase = createClient(supabaseUrl, supabaseKey)
-        
-        supabase
-        .from('Ordenes')
-        .select('Contenido')
-        .then(response => {
-            const data = response.data;
-            console.log(data);
-        })
-        .catch(error => {
-            console.error(error);
-        })
-        </script>
-
-        <!--Hasta aquí c:-->
     </head>
+
+    <script type="text/javascript">
+        function confirmarVuelta(){
+            var respuesta = confirm("La sesión se cerrará si vuelves al inicio, ¿Realmente quieres volver?");
+
+            if(respuesta == true){
+                return true;
+            } else{
+                return false;
+            }
+        }
+    </script>
+
     <body class="main-bg">
         <div class="alert alert-2-success">
             <h3 class="alert-title">Orden creada correctamente</h3>
@@ -66,7 +54,7 @@ if (!$conn) {
                     </div>
                 </div>
                 <div class="sidebar-tools">
-                    <a href="home.php" class="sidebar-tool">
+                    <a href="home.php" class="sidebar-tool" onclick="return confirmarVuelta()">
                         Inicio
                     </a>
                     <div class="horizontal-gap"></div>
@@ -84,24 +72,22 @@ if (!$conn) {
                 </div>
             </div>
             <!-- Sidebar -->
-            <form action="php/conexion.php" method="POST" class="content">
+            <form method="POST" class="content">
                 <div class="nueva_orden_add_dish">
                     <div class="nueva_orden_add_dish_container">
                         <div class="nueva_orden_add_dish_select_container">
                             <span>Platillo:</span>
                             <select id="selector" class="nueva_orden_add_dish_select">
                                 <option></option>
-                                <option value="50">Tacos de trompo</option>
-                                <option value="60">Tacos de bistec</option>
-                                <option value="30">Sopes</option>
-                                <option value="45">Enchiladas</option>
-                                <option value="40">Quesadillas</option>
+                                <!--Valores antiguos en orden: 50, 60, 30, 45, 40-->
+                                <option value="Tacos de Trompo">Tacos de trompo</option>
+                                <option value="Tacos de Bistec">Tacos de bistec</option>
+                                <option value="Sopes">Sopes</option>
+                                <option value="Enchiladas">Enchiladas</option>
+                                <option value="Quesadillas">Quesadillas</option>
                             </select>
                         </div>
-                        <div class="nueva_orden_add_dish_considerations_container">
-                            <span>Consideraciones:</span>
-                            <textarea id="textarea1" class="nueva_orden_add_dish_considerations" placeholder="Consideraciones"></textarea>
-                        </div>
+                        
                         <div class="nueva_orden_add_dish_qty_container">
                             <span>Cantidad (por defecto es 5):</span>
                             <input id="contador" type="number" value="5">
@@ -126,7 +112,7 @@ if (!$conn) {
                             
                         </div>
                         <div class="nueva_orden_add_dish_send">
-                            <input href="nueva_orden.html" type="submit" value="Confirmar Pedido">
+                            <input href="nueva_orden.php" type="submit" value="Confirmar Pedido">
                             <!--<a href="nueva_orden.html">Confirmar Pedido</a>-->
                         </div>
                     </div>
@@ -158,4 +144,26 @@ document.getElementById('nOrd').addEventListener('submit', function(event) {
 
         </script>
     </body>
+    <?php 
+    if(!empty($_POST['send'])){
+        if(empty($_POST["usuario"]) and empty($_POST["contraseña"])){
+        echo '<div class="alert alert-danger">Los campos están vacíos </div>';
+        } else {
+        if(isset($_POST['send'])){
+            $Usuario = $_POST ['usuario'];
+            $Contraseña = $_POST ['contraseña'];
+        /*$insertarDatos = "INSERT INTO usuarios VALUES('', '$Usuario', '$Contraseña')";
+        $exInsertar = mysqli_query ($conn,$insertarDatos);*/
+
+            $sql = $conn->query("SELECT * FROM usuarios where Usuario='$Usuario' and Contraseña='$Contraseña'");
+
+            if($datos=$sql->fetch_object()){
+                header("location:nueva_orden.php");
+            }else{
+                echo '<div class="alert alert-danger">Los datos son incorrectos</div>';
+            }
+        }
+        }
+    }
+?>
 </html>

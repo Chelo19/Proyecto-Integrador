@@ -1,0 +1,12 @@
+O bueno, solo si les dio hueva leer los cambios en git o directamente no los leyeron
+
+ya está hecho lo de la conexión a la base de datos en home (para usuarios, aunque no se pueden agregar datos desde el php
+ni tiene formato) y en ordenes (similar a lo anterior, ni formato ni agregar datos desde el php)
+
+Si pueden darle formato a este pedo se los agradecería
+
+Por si acaso dejé como hice la base de datos en phpmyadmin en 2 imagenes en la carpeta anterior
+Para que jale todo deben tener todo el pedo del proyecto en (Disco donde tengan instalado xampp, por defecto "C:")\xampp\htdocs\PIA\ 
+(a la carpeta le puse PIA para evitar pedos)
+
+La instalación de xampp es todo simple sin nada especial ni nada omitido, asi que solo den aceptar a todo

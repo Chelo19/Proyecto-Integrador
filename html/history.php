@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="../css/output.css">
         <link rel="stylesheet" href="../css/historial.css">
     </head>
-    
+
     <script type="text/javascript">
         function confirmarVuelta(){
             var respuesta = confirm("La sesión se cerrará si vuelves al inicio, ¿Realmente quieres volver?");
@@ -36,19 +36,19 @@
                     </div>
                 </div>
                 <div class="sidebar-tools">
-                    <a href="home.html" class="sidebar-tool" onclick="return confirmarVuelta()">
+                    <a href="home.php" class="sidebar-tool" onclick="return confirmarVuelta()">
                         Inicio
                     </a>
                     <div class="horizontal-gap"></div>
-                    <a href="nueva_orden.html" class="sidebar-tool">
+                    <a href="nueva_orden.php" class="sidebar-tool">
                         Nueva Orden
                     </a>
                     <div class="horizontal-gap"></div>
-                    <a href="ordenes.html" class="sidebar-tool">
+                    <a href="ordenes.php" class="sidebar-tool">
                         Órdenes
                     </a>
                     <div class="horizontal-gap"></div>
-                    <a href="history.html" class="sidebar-tool">
+                    <a href="history.php" class="sidebar-tool">
                         Historial
                     </a>
                 </div>

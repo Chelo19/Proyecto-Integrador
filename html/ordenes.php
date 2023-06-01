@@ -23,31 +23,20 @@ if (!$conn) {
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/output.css">
         <link rel="stylesheet" href="../css/historial.css">
-        <!--Si les da error, hagan lo siguiente un comentario-->
-        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-        
-        <script>
-        import { createClient } from '@supabase/supabase-js'
-
-        const supabaseUrl = 'https://vemlyvaobeituwkpsbvy.supabase.co'
-        const supabaseKey = process.env.SUPABASE_KEY
-        const supabase = createClient(supabaseUrl, supabaseKey)
-
-        supabase
-        .from(Ordenes)
-        .select(Contenido, Entregada)
-        .then(response => {
-            const data = response.data;
-            console.log(data);
-        })
-        .catch(error => {
-            console.error(error);
-        })
-
-        </script>
-
-        <!--Hasta aquí c:-->
     </head>
+
+    <script type="text/javascript">
+        function confirmarVuelta(){
+            var respuesta = confirm("La sesión se cerrará si vuelves al inicio, ¿Realmente quieres volver?");
+
+            if(respuesta == true){
+                return true;
+            } else{
+                return false;
+            }
+        }
+    </script>
+
     <body class="main-bg">
         <div class="main-display">
             <!-- Sidebar -->
@@ -61,7 +50,7 @@ if (!$conn) {
                     </div>
                 </div>
                 <div class="sidebar-tools">
-                    <a href="home.php" class="sidebar-tool">
+                    <a href="home.php" class="sidebar-tool" onclick="return confirmarVuelta()">
                         Inicio
                     </a>
                     <div class="horizontal-gap"></div>
@@ -104,8 +93,20 @@ if (!$conn) {
                     <div class="history-container-titles" id="history-container-title2">Total</div>
                     <div class="history-container-titles" id="history-container-title3">Fecha</div>
                     <div class="history-container-orders">
-                        <a href="history.html" class="history-container-order">
+                        <a href="history.php" class="history-container-order">
                         </a>
+
+                        <?php 
+                        
+                        $sql = "SELECT * FROM ordenes";
+                        $resultado = mysqli_query($conn, $sql);
+                        if(mysqli_num_rows($resultado) > 0){
+                            while ($fila = mysqli_fetch_assoc($resultado)){
+                                echo "<a>" , "<span>" . $fila['ID'] , "</span>" . 'Total: ' , $fila['Cantidad'] , "</a>" , "<br>";
+                            }
+                        }
+
+                         ?>
                         <a href="history.html" class="history-container-order">
                             <span id="history-container-order-title1">{REFERENCIA ORDEN}</span>
                             <span id="history-container-order-title2">{TOTAL}</span>
