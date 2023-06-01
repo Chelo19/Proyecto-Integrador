@@ -7,6 +7,15 @@ Si pueden darle formato a este pedo se los agradecería
 
 Por si acaso dejé como hice la base de datos en phpmyadmin en 2 imagenes en la carpeta anterior
 Para que jale todo deben tener todo el pedo del proyecto en (Disco donde tengan instalado xampp, por defecto "C:")\xampp\htdocs\PIA\ 
-(a la carpeta le puse PIA para evitar pedos)
+(a la carpeta le puse PIA para evitar pedos, esta tiene que ser carpeta nueva y vacía)
 
 La instalación de xampp es todo simple sin nada especial ni nada omitido, asi que solo den aceptar a todo
+
+Para iniciar el xampp (la base de datos, vaya) tienen que abrirlo una vez instalado (XAMPP Control Panel), y darle "start"
+a las opciones "Apache", "MySQL", y por si acaso "FileZilla", una vez hecho esto, para acceder a la base de datos deben
+poner en su navegador (sin comillas) "localhost/phpmyadmin" ahi van a poder ver todo lo relacionado con la base de datos
+(aqui es donde la tendrían que recrear, nombre y tablas en minusculas, columnas con la primer letra mayuscula)
+y para ver que todo jale bien con el html pongan (nuevamente sin comillas) "localhost/(Carpeta donde tienen guardado todo)/html/nueva_orden.php" esto lo pongo así porque al inicio le puse una minivalidación y para eso ocupan la base de datos
+y crear un usuario segun los campos que les dejé en las 2 screenshots de la carpeta anterior, tambien para evitar accidentes puse otra validación para que no le den a la parte de "Inicio" en la pagina
+
+Si les surgen mas dudas mandenme whatsapp
