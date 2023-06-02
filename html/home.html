@@ -35,7 +35,7 @@
     </head>
 
     <body class="main-bg">
-        <?php
+        <!-- <?php
             $sql = 'SELECT Usuario, Contraseña FROM Usuarios'
             $resultado = mysqli_query($conn, $sql);
             while ($fila = mysqli_fetch_assoc($resultado)) {
@@ -46,7 +46,7 @@
 
             // Cerrar la conexión
             mysqli_close($conn);
-        ?>
+        ?> -->
         <div class="main-display">
             <!-- Sidebar -->
             <div class="sidebar">
@@ -78,7 +78,39 @@
             </div>
             <!-- Sidebar -->
             <div class="content">
-                
+                <div class="home_bg">
+                    <div class="home_display">
+                        <span class="home_title">Es un gusto verte de nuevo, Marcelo</span>
+                        <span class="home_text">2 de Junio del 2023</span>
+                        <div class="home_indicators_display">
+                            <div class="home_indicators_container">
+                                <div class="home_indicator_title_container">
+                                    <span class="home_indicator_title">Hoy</span>
+                                </div>
+                                <div class="home_indicator">
+                                    <span class="home_indicator_item">Órdenes pendientes | 4</span>
+                                </div>
+                                <div class="home_indicator">
+                                    <span class="home_indicator_item">Órdenes completadas | 10</span>
+                                </div>
+                            </div>
+                            <div class="home_indicators_container">
+                                <div class="home_indicator_title_container">
+                                    <span class="home_indicator_title">Esta semana</span>
+                                </div>
+                                <div class="home_indicator">
+                                    <span class="home_indicator_item">Órdenes completadas | 105</span>
+                                </div>
+                                <a href="history.html" class="home_nueva_orden_button" id="button_350px">
+                                    Ver historial
+                                </a>
+                            </div>
+                        </div>
+                        <a href="nueva_orden.html" class="home_nueva_orden_button">
+                            Nueva orden
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
