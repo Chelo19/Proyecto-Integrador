@@ -1,12 +1,10 @@
 const BtnPlatillo = document.querySelector('.nueva_orden_add_dish_send');
 const orden = document.createElement('span');
-const especificacion = document.createElement('span');
 const precio = document.createElement('span');
 const cobrar = document.createElement('span');
 var totalord = 0;
-var total = 0
+var total = 0;
 let carrito = [];
-const txtEspecificacion = document.querySelector('.nueva_orden_add_dish_considerations');
 
 BtnPlatillo.addEventListener('click', validar);
 
@@ -19,8 +17,6 @@ function validar(){
     //Obtiene la orden de comida
     var combo = document.getElementById('selector');
     var textord = combo.options[combo.selectedIndex].text;
-    //obtiene la especificaciones en caso de haber
-    var consideraciones = document.getElementById('textarea1').value;
     //obtiene cuantas ordenees serian
     var cantidad = document.getElementById('contador').value; 
     
@@ -34,22 +30,23 @@ function validar(){
     cobrarhtml.appendChild(cobrar);
 
     //en un array llamado "carrito" guarda el detalle de las ordenes
-    carrito.push({cantidad, textord, consideraciones, totalord});
+    carrito.push({cantidad, textord, totalord});
     //actualiza las ordenes en el carrito y las pone en el HTML
     carrito.forEach((e) => {
         const ordenComp = document.createElement('div');
         ordenComp.classList.add('nueva_orden_ticket_final_item');
         ordenComp.innerHTML = `
-            <span>${e.cantidad} ${e.textord} ${e.consideraciones}</span>   
+            <span>${e.cantidad} ${e.textord}</span>   
             <span>$ ${e.totalord}</span>
         `; 
         const ordenDiv = document.querySelector('.nueva_orden_ticket_final_items');
         ordenDiv.appendChild(ordenComp);
     })
+    
 
     //"borra" el array anterior para que no se repita en el HTML 
     delete carrito [0]
     delete carrito [1]
     delete carrito [2]
-    delete carrito [3]
+    
 }
