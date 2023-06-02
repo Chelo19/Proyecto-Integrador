@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/login.css">
         <link rel="stylesheet" href="../css/output.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,26 +32,38 @@
         <title>Login</title>
     </head>
     <body class="login-bg">
+        <div class="alert alert-2-success">
+            <h3 class="alert-title">Inicio de sesión correcto</h3>
+            <p class="alert-content">¡Bienvenido Marcelo!</p>
+        </div>
         <div class="login-component">
             <div class="login-container">
-                <div class="text-green-700 login-container-title">
-                    Inicio de sesión
+                <div class="login-container-title">
+                    ¡Es un gusto verte de nuevo!
                 </div>
                 <div class="login-container-input-box">
                     <div class="login-container-input-div">
                         <span>Usuario</span>
-                        <input class="login-container-input" placeholder="Usuario"/>
+                        <div class="login-container-input">
+                            <img src="../src/user-icon-mini.png"/>
+                            <input placeholder="Usuario"/>
+                        </div>
                     </div>
                     <div class="login-container-input-div">
                         <span>Contraseña</span>
-                        <input class="login-container-input" placeholder="Contraseña"/>
+                        <div class="login-container-input">
+                            <img src="../src/lock-icon-mini.png"/>
+                            <input placeholder="Contraseña"/>
+                        </div>
                     </div>
-                    <button class="login-container-send">Enviar</button>
                 </div>
             </div>
         </div>
         <div class="login-component">
-            <span class="text-green-700 login-title">Inicia sesión para comenzar a usar el sistema</span>
+            <button class="login-container-send">Enviar</button>
+        </div>
+        <div class="login-component">
+            <span class="login-title">Inicia sesión para comenzar a usar el sistema</span>
         </div>
     </body>
 </html>
