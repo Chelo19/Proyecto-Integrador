@@ -96,7 +96,7 @@ if (!$conn) {
         /*$insertarDatos = "INSERT INTO usuarios VALUES('', '$Usuario', '$Contraseña')";
         $exInsertar = mysqli_query ($conn,$insertarDatos);*/
 
-            $sql = $conn->query("SELECT * FROM usuarios where Usuario='$Usuario' and Contraseña='$Contraseña'");
+            $sql = $conn->query("SELECT * FROM usuarios where ID='$Usuario' and Contraseña='$Contraseña'");
 
             if($datos=$sql->fetch_object()){
                 header("location:nueva_orden.php");
