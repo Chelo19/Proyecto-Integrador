@@ -20,6 +20,7 @@ if (!$conn) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Nueva Orden</title>
+        <link rel="stylesheet" href="../css/home.css">
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/output.css">
         <link rel="stylesheet" href="../css/nueva_orden.css">
@@ -38,10 +39,10 @@ if (!$conn) {
     </script>
 
     <body class="main-bg">
-        <div class="alert alert-2-success">
-            <h3 class="alert-title">Orden creada correctamente</h3>
-            <p class="alert-content">Se ha agregado la orden {id}</p>
-        </div>
+        <?php
+        
+        ?>
+        
         <div class="main-display">
             <!-- Sidebar -->
             <div class="sidebar">
@@ -54,11 +55,11 @@ if (!$conn) {
                     </div>
                 </div>
                 <div class="sidebar-tools">
-                    <a href="home.php" class="sidebar-tool" onclick="return confirmarVuelta()">
+                    <a href="home.php" class="sidebar-tool">
                         Inicio
                     </a>
                     <div class="horizontal-gap"></div>
-                    <a href="nueva_orden.php" class="sidebar-tool">
+                    <a class="sidebar-tool" style="background-color:rgba(2, 172, 2, 1); color: #fff">
                         Nueva Orden
                     </a>
                     <div class="horizontal-gap"></div>
@@ -69,6 +70,9 @@ if (!$conn) {
                     <a href="history.php" class="sidebar-tool">
                         Historial
                     </a>
+                    <a href="login.php" class="sidebar-tool" onclick="return confirmarVuelta()">
+                        Cerrar Sesión
+                    </a>
                 </div>
             </div>
             <!-- Sidebar -->
@@ -77,8 +81,8 @@ if (!$conn) {
                     <div class="nueva_orden_add_dish_container">
                         <div class="nueva_orden_add_dish_select_container">
                             <span>Platillo:</span>
-                            <select id="selector" class="nueva_orden_add_dish_select">
-                                <option></option>
+                            <select id="selector" name="selector" for="selector" class="nueva_orden_add_dish_select">
+                                <option value="0">Seleccione una opción</option>
                                 <!--Valores antiguos en orden: 50, 60, 30, 45, 40-->
                                 <option value="Tacos de Trompo">Tacos de trompo</option>
                                 <option value="Tacos de Bistec">Tacos de bistec</option>
@@ -90,10 +94,10 @@ if (!$conn) {
                         
                         <div class="nueva_orden_add_dish_qty_container">
                             <span>Cantidad (por defecto es 5):</span>
-                            <input id="contador" type="number" value="5">
+                            <input id="contador" name="contador" type="number" value="5">
                         </div>
                         <div class="nueva_orden_add_dish_send">
-                            <span>Agregar Platillo</span>
+                        <input href="nueva_orden.php" type="submit" id="send" name="send" value="Confirmar Pedido">
                         </div>
                     </div>
                 </div>
@@ -111,14 +115,44 @@ if (!$conn) {
                             </div>
                             
                         </div>
-                        <div class="nueva_orden_add_dish_send">
-                            <input href="nueva_orden.php" type="submit" value="Confirmar Pedido">
+                        <div class="nueva_orden_add_dish_send2">
+                            <input href="nueva_orden.php" type="submit" id="send" name="send" value="Confirmar Pedido">
                             <!--<a href="nueva_orden.html">Confirmar Pedido</a>-->
                         </div>
                     </div>
                 </div>
             </form>
         </div>
+
+        <?php 
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $timezone = 'America/Monterrey';
+        $date = new DateTime('now', new DateTimeZone($timezone));
+        $Fecha = $date -> format('Y-m-d');
+        $Selector = $_POST ['selector'];
+        $Contador = $_POST ['contador'];
+        if(isset($_POST['send'])){
+            
+        /*$insertarDatos = "INSERT INTO usuarios VALUES('', '$Usuario', '$Contraseña')";
+        $exInsertar = mysqli_query ($conn,$insertarDatos);*/
+
+            /*$sql = $conn->query("SELECT * FROM usuarios where Usuario='$Usuario' and Contraseña='$Contraseña'");
+
+            if($datos=$sql->fetch_object()){
+                header("location:nueva_orden.php");
+            }else{
+                echo '<div class="alert alert-danger">Los datos son incorrectos</div>';
+            }*/
+            //CURRENT_TIMESTAMP
+            $insertarDatos = "INSERT INTO ordenes ('Producto', 'Cantidad', 'Fecha') VALUES ('Selector', 'Contador', 'Fecha')";
+            }
+        }
+        echo "<div class='alert alert-2-success'>";
+            echo "<h3 class='alert-title'>Orden creada correctamente</h3>";
+            echo "<p class='alert-content'>Se ha agregado la orden {id}</p>";
+        echo "</div>";
+    ?>
+
         <script>
             // Capturar el evento de envío del formulario
 document.getElementById('nOrd').addEventListener('submit', function(event) {
@@ -144,26 +178,5 @@ document.getElementById('nOrd').addEventListener('submit', function(event) {
 
         </script>
     </body>
-    <?php 
-    if(!empty($_POST['send'])){
-        if(empty($_POST["usuario"]) and empty($_POST["contraseña"])){
-        echo '<div class="alert alert-danger">Los campos están vacíos </div>';
-        } else {
-        if(isset($_POST['send'])){
-            $Usuario = $_POST ['usuario'];
-            $Contraseña = $_POST ['contraseña'];
-        /*$insertarDatos = "INSERT INTO usuarios VALUES('', '$Usuario', '$Contraseña')";
-        $exInsertar = mysqli_query ($conn,$insertarDatos);*/
 
-            $sql = $conn->query("SELECT * FROM usuarios where Usuario='$Usuario' and Contraseña='$Contraseña'");
-
-            if($datos=$sql->fetch_object()){
-                header("location:nueva_orden.php");
-            }else{
-                echo '<div class="alert alert-danger">Los datos son incorrectos</div>';
-            }
-        }
-        }
-    }
-?>
 </html>

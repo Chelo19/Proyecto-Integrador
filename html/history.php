@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div class="sidebar-tools">
-                    <a href="home.php" class="sidebar-tool" onclick="return confirmarVuelta()">
+                    <a href="home.php" class="sidebar-tool">
                         Inicio
                     </a>
                     <div class="horizontal-gap"></div>
@@ -48,8 +48,11 @@
                         Órdenes
                     </a>
                     <div class="horizontal-gap"></div>
-                    <a href="history.php" class="sidebar-tool">
+                    <a class="sidebar-tool" style="background-color:rgba(2, 172, 2, 1); color: #fff">
                         Historial
+                    </a>
+                    <a href="login.php" class="sidebar-tool" onclick="return confirmarVuelta()">
+                        Cerrar Sesión
                     </a>
                 </div>
             </div>

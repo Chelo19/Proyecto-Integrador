@@ -50,7 +50,7 @@ if (!$conn) {
                     </div>
                 </div>
                 <div class="sidebar-tools">
-                    <a href="home.php" class="sidebar-tool">
+                    <a href="home.php" class="sidebar-tool" onclick="return confirmarVuelta()">
                         Inicio
                     </a>
                     <div class="horizontal-gap"></div>
@@ -58,19 +58,34 @@ if (!$conn) {
                         Nueva Orden
                     </a>
                     <div class="horizontal-gap"></div>
-                    <a class="sidebar-tool" style="background-color:rgba(2, 172, 2, 1); color: #fff">
+                    <a href="ordenes.php" class="sidebar-tool">
                         Órdenes
                     </a>
                     <div class="horizontal-gap"></div>
                     <a href="history.php" class="sidebar-tool">
                         Historial
                     </a>
-                    <a href="login.php" class="sidebar-tool" onclick="return confirmarVuelta()">
-                        Cerrar Sesión
-                    </a>
                 </div>
             </div>
             
+            <!-- Sidebar -->
+            <!-- <div class="content">
+                <div class="titulo"><span class="titulo2">Pedidos</span></div>
+                <div class="historial">
+                    <div class="historial_dish_container">
+                        <div class="historial_dish_select_container">
+                            <span class="linea">Orden: <span class="linea2">Total</span>  <span class="linea3">Hora</span> </span>
+
+                            <hr>
+                        </div>
+                        
+                        
+                        <div class="nueva_orden_add_dish_send">
+                            <a href="nueva_orden.html" >Agregar Platillo</a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
             <div class="content-history">
                 <span class="history-title">Órdenes</span>
                 <div class="history-container">
@@ -85,6 +100,8 @@ if (!$conn) {
                         
                         $sql = "SELECT * FROM ordenes";
                         $resultado = mysqli_query($conn, $sql);
+                        //echo ;
+
                         if(mysqli_num_rows($resultado) > 0){
                             echo "<table>";
                             while ($fila = mysqli_fetch_assoc($resultado)){

@@ -317,12 +317,29 @@
     border-radius: 10px;
 }
 
+.history-container-order1{
+    transition: .5s;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    border-radius: 10px;
+}
+
 .history-container-order:hover{
     transition: .5s;
     background-color: rgba(0, 128, 0, 0.2);
 }
 
+.history-container-order1:hover{
+    transition: .5s;
+    background-color: rgba(0, 128, 0, 0.2);
+}
+
 .history-container-order span{
+    color: green;
+}
+
+.history-container-order1 span{
     color: green;
 }
 
@@ -334,6 +351,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-collapse: separate;
+    border-spacing: 1px 100px;
 }
 
 #history-container-order-title1:hover{
@@ -349,6 +368,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-collapse: separate;
+    border-spacing: 1px 100px;
 }
 
 #history-container-order-title2:hover{
@@ -364,9 +385,48 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-collapse: separate;
+    border-spacing: 1px 100px;
 }
 
 #history-container-order-title3:hover{
     transition: .5s;
     background-color: rgba(0, 128, 0, 0.3);
+}
+
+#historycontainerordertitle1{
+    border-radius: 10px;
+    transition: .5s;
+    grid-column: 1/4;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#historycontainerordertitle1:hover{
+    transition: .5s;
+    background-color: rgba(0, 128, 0, 0.3);
+}
+
+.historycontainerordertitle2{
+    border-radius: 10px;
+    transition: .5s;
+    grid-column: 4/5;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.historycontainerordertitle3{
+    border-radius: 10px;
+    transition: .5s;
+    grid-column: 5/7;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

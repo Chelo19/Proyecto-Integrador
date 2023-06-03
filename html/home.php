@@ -1,24 +1,3 @@
-<?php
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "proint";
-
-// Conexión a la base de datos
-$conn = mysqli_connect($host, $username, $password, $database);
-
-// Verificar la conexión
-if (!$conn) {
-    die('Error al conectar a la base de datos: ' . mysqli_connect_error());
-}
-?>
-
-    <script type="text/javascript">
-        function No(){
-            var respuesta = alert("Debe iniciar sesión para acceder a esto");
-        }
-    </script>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -29,8 +8,19 @@ if (!$conn) {
         <link rel="stylesheet" href="../css/home.css">
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/output.css">
-
     </head>
+
+    <script type="text/javascript">
+        function confirmarVuelta(){
+            var respuesta = confirm("La sesión se cerrará si vuelves al inicio, ¿Realmente quieres volver?");
+
+            if(respuesta == true){
+                return true;
+            } else{
+                return false;
+            }
+        }
+    </script>
 
     <body class="main-bg">
         <div class="main-display">
@@ -45,67 +35,62 @@ if (!$conn) {
                     </div>
                 </div>
                 <div class="sidebar-tools">
-                    <a href="home.php" class="sidebar-tool">
+                    <a class="sidebar-tool" style="background-color:rgba(2, 172, 2, 1); color: #fff">
                         Inicio
                     </a>
                     <div class="horizontal-gap"></div>
-                    <a class="sidebar-tool" onclick="return No()">
+                    <a href="nueva_orden.php" class="sidebar-tool">
                         Nueva Orden
                     </a>
                     <div class="horizontal-gap"></div>
-                    <a class="sidebar-tool" onclick="return No()">
+                    <a href="ordenes.php" class="sidebar-tool">
                         Órdenes
                     </a>
                     <div class="horizontal-gap"></div>
-                    <a class="sidebar-tool" onclick="return No()">
+                    <a href="history.php" class="sidebar-tool">
                         Historial
+                    </a>
+                    <a href="login.php" class="sidebar-tool" onclick="return confirmarVuelta()">
+                        Cerrar Sesión
                     </a>
                 </div>
             </div>
             <!-- Sidebar -->
             <div class="content">
-            <form action="#" method="POST" class="content">
-            <div class="nueva_orden_add_dish">
-                    <div class="nueva_orden_add_dish_container">
-                        <div class="nueva_orden_add_dish_select_container">
-                            <span>Iniciar Sesión</span>
-                            <input type="text" name="usuario" id="usuario" placeholder="Usuario">
+                <div class="home_bg">
+                    <div class="home_display">
+                        <span class="home_title">Es un gusto verte de nuevo, Marcelo</span>
+                        <span class="home_text">2 de Junio del 2023</span>
+                        <div class="home_indicators_display">
+                            <div class="home_indicators_container">
+                                <div class="home_indicator_title_container">
+                                    <span class="home_indicator_title">Hoy</span>
+                                </div>
+                                <div class="home_indicator">
+                                    <span class="home_indicator_item">Órdenes pendientes | 4</span>
+                                </div>
+                                <div class="home_indicator">
+                                    <span class="home_indicator_item">Órdenes completadas | 10</span>
+                                </div>
+                            </div>
+                            <div class="home_indicators_container">
+                                <div class="home_indicator_title_container">
+                                    <span class="home_indicator_title">Esta semana</span>
+                                </div>
+                                <div class="home_indicator">
+                                    <span class="home_indicator_item">Órdenes completadas | 105</span>
+                                </div>
+                                <a href="history.php" class="home_nueva_orden_button" id="button_350px">
+                                    Ver historial
+                                </a>
+                            </div>
                         </div>
-                        <div class="nueva_orden_add_dish_considerations_container">
-                            <span>Consideraciones:</span>
-                            <input type="password" name="contraseña" id="contraseña" placeholder="Contraseña">
-                        </div>
-                        <div class="nueva_orden_add_dish_send">
-                            <input type="submit" name="send" id="send" placeholder="Entrar">
-                            <input type="reset">
-                        </div>
+                        <a href="nueva_orden.php" class="home_nueva_orden_button">
+                            Nueva orden
+                        </a>
                     </div>
                 </div>
             </div>
-            </form>
         </div>
     </body>
-    <?php 
-    if(!empty($_POST['send'])){
-        if(empty($_POST["usuario"]) and empty($_POST["contraseña"])){
-        echo '<div class="alert alert-danger">Los campos están vacíos </div>';
-        } else {
-        if(isset($_POST['send'])){
-            $Usuario = $_POST ['usuario'];
-            $Contraseña = $_POST ['contraseña'];
-        /*$insertarDatos = "INSERT INTO usuarios VALUES('', '$Usuario', '$Contraseña')";
-        $exInsertar = mysqli_query ($conn,$insertarDatos);*/
-
-            $sql = $conn->query("SELECT * FROM usuarios where ID='$Usuario' and Contraseña='$Contraseña'");
-
-            if($datos=$sql->fetch_object()){
-                header("location:nueva_orden.php");
-            }else{
-                echo '<div class="alert alert-danger">Los datos son incorrectos</div>';
-            }
-        }
-        }
-    }
-?>
 </html>
-

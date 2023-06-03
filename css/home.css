@@ -103,3 +103,75 @@
     transition: 1s;
     background-color: rgb(2, 197, 2);
 }
+
+input[type="text"]{
+    font-size: 0.8em;
+    border-radius: 10px;
+    margin: 0.5em;
+    padding: 0.2em;
+    align-items: center;
+    border-color: blue;
+    border-width: 2px;
+}
+
+input[type="password"]{
+    font-size: 0.8em;
+    border-radius: 10px;
+    margin: 0.5em;
+    padding: 0.2em;
+    align-items: center;
+    border-color: blue;
+    border-width: 2px;
+}
+
+input[type="submit"]{
+    font-size: 0.8em;
+    border-radius: 10px;
+    margin: 0.5em;
+    padding: 0.2em;
+    font-family: Arial, Helvetica, sans-serif;
+    border-color: black;
+    border-width: 2px;
+    font-weight: bold;
+}
+
+input[type="reset"]{
+    font-size: 0.8em;
+    border-radius: 10px;
+    margin: 0.5em;
+    padding: 0.2em;
+    font-family: Arial, Helvetica, sans-serif;
+    border-color: black;
+    border-width: 2px;
+    font-weight: bold;
+}
+
+.nueva_orden_add_dish_container2{
+    width: 100%;
+    height: 80%;
+    border-radius: 10px;
+    border: 3px solid rgba(0, 128, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 50%;
+}
+
+.login{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.nueva_orden_add_dish2{
+    grid-column: 1/2;
+    padding: 40px 10px 10px 10px;
+}
+
+.nueva_orden_add_dish_send{
+    width: calc(100% - 40px);
+    display: flex;
+    justify-content: end;
+    cursor: pointer;
+}
