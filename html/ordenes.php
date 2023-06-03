@@ -88,7 +88,7 @@ if (!$conn) {
                         if(mysqli_num_rows($resultado) > 0){
                             echo "<table>";
                             while ($fila = mysqli_fetch_assoc($resultado)){
-                                echo "<tr class='history-container-order1'>";
+                                echo "<tr>";
                                 echo "<td>" , $fila['Producto'] , " </td>";
                                 echo "<td> " , $fila['Cantidad'] , "</td>";
                                 echo "<td> " , $fila['Fecha'] , "</td>";
@@ -98,71 +98,12 @@ if (!$conn) {
                             echo "</table>";
                         }
 
-                         ?>
-                        <a href="history.html" class="history-container-order">
-                            <span id="history-container-order-title1">{REFERENCIA ORDEN}</span>
-                            <span id="history-container-order-title2">{TOTAL}</span>
-                            <span id="history-container-order-title3">{FECHA}</span>
-                        </a>
-                        <a href="history.html" class="history-container-order">
-                            <span id="history-container-order-title1">{REFERENCIA ORDEN}</span>
-                            <span id="history-container-order-title2">{TOTAL}</span>
-                            <span id="history-container-order-title3">{FECHA}</span>
-                        </a>
-                        <a href="history.html" class="history-container-order">
-                            <span id="history-container-order-title1">{REFERENCIA ORDEN}</span>
-                            <span id="history-container-order-title2">{TOTAL}</span>
-                            <span id="history-container-order-title3">{FECHA}</span>
-                        </a>
-                        <a href="history.html" class="history-container-order">
-                            <span id="history-container-order-title1">{REFERENCIA ORDEN}</span>
-                            <span id="history-container-order-title2">{TOTAL}</span>
-                            <span id="history-container-order-title3">{FECHA}</span>
-                        </a>
-                        <a href="history.html" class="history-container-order">
-                            <span id="history-container-order-title1">{REFERENCIA ORDEN}</span>
-                            <span id="history-container-order-title2">{TOTAL}</span>
-                            <span id="history-container-order-title3">{FECHA}</span>
-                        </a>
-                        <a href="history.html" class="history-container-order">
-                            <span id="history-container-order-title1">{REFERENCIA ORDEN}</span>
-                            <span id="history-container-order-title2">{TOTAL}</span>
-                            <span id="history-container-order-title3">{FECHA}</span>
-                        </a>
-                        <a href="history.html" class="history-container-order">
-                            <span id="history-container-order-title1">{REFERENCIA ORDEN}</span>
-                            <span id="history-container-order-title2">{TOTAL}</span>
-                            <span id="history-container-order-title3">{FECHA}</span>
-                        </a>
-                        <a href="history.html" class="history-container-order">
-                            <span id="history-container-order-title1">{REFERENCIA ORDEN}</span>
-                            <span id="history-container-order-title2">{TOTAL}</span>
-                            <span id="history-container-order-title3">{FECHA}</span>
-                        </a>
-                        <a href="history.html" class="history-container-order">
-                            <span id="history-container-order-title1">{REFERENCIA ORDEN}</span>
-                            <span id="history-container-order-title2">{TOTAL}</span>
-                            <span id="history-container-order-title3">{FECHA}</span>
-                        </a>
-                        <a href="history.html" class="history-container-order">
-                            <span id="history-container-order-title1">{REFERENCIA ORDEN}</span>
-                            <span id="history-container-order-title2">{TOTAL}</span>
-                            <span id="history-container-order-title3">{FECHA}</span>
-                        </a>
-                        <a href="history.html" class="history-container-order">
-                            <span id="history-container-order-title1">{REFERENCIA ORDEN}</span>
-                            <span id="history-container-order-title2">{TOTAL}</span>
-                            <span id="history-container-order-title3">{FECHA}</span>
-                        </a>
-                        <a href="history.html" class="history-container-order">
-                            <span id="history-container-order-title1">{REFERENCIA ORDEN}</span>
-                            <span id="history-container-order-title2">{TOTAL}</span>
-                            <span id="history-container-order-title3">{FECHA}</span>
-                        </a>
+                        ?>
+                        
                     </div>
                 </div>
                 <div class="nueva_orden_add_dish_send">
-                    <a href="nueva_orden.html" >Agregar Platillo</a>
+                    <a href="nueva_orden.php" >Agregar Platillo</a>
                 </div>
             </div>
         </div>

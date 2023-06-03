@@ -110,7 +110,7 @@ input[type="text"]{
     margin: 0.5em;
     padding: 0.2em;
     align-items: center;
-    border-color: blue;
+    border-color: green;
     border-width: 2px;
 }
 
@@ -120,7 +120,7 @@ input[type="password"]{
     margin: 0.5em;
     padding: 0.2em;
     align-items: center;
-    border-color: blue;
+    border-color: green;
     border-width: 2px;
 }
 

@@ -81,15 +81,16 @@ if (!$conn) {
                     <div class="nueva_orden_add_dish_container">
                         <div class="nueva_orden_add_dish_select_container">
                             <span>Platillo:</span>
-                            <select id="selector" name="selector" for="selector" class="nueva_orden_add_dish_select">
+                            <!--<select id="selector" name="selector" for="selector" class="nueva_orden_add_dish_select">
                                 <option value="0">Seleccione una opción</option>
-                                <!--Valores antiguos en orden: 50, 60, 30, 45, 40-->
+                                Valores antiguos en orden: 50, 60, 30, 45, 40
                                 <option value="Tacos de Trompo">Tacos de trompo</option>
                                 <option value="Tacos de Bistec">Tacos de bistec</option>
                                 <option value="Sopes">Sopes</option>
                                 <option value="Enchiladas">Enchiladas</option>
                                 <option value="Quesadillas">Quesadillas</option>
-                            </select>
+                            </select>-->
+                            <input type="text" name="selector" id="selector"  placeholder="Platillo">
                         </div>
                         
                         <div class="nueva_orden_add_dish_qty_container">
@@ -131,7 +132,7 @@ if (!$conn) {
         $Fecha = $date -> format('Y-m-d');
         $Selector = $_POST ['selector'];
         $Contador = $_POST ['contador'];
-        if(isset($_POST['send'])){
+        
             
         /*$insertarDatos = "INSERT INTO usuarios VALUES('', '$Usuario', '$Contraseña')";
         $exInsertar = mysqli_query ($conn,$insertarDatos);*/
@@ -144,9 +145,8 @@ if (!$conn) {
                 echo '<div class="alert alert-danger">Los datos son incorrectos</div>';
             }*/
             //CURRENT_TIMESTAMP
-            $insertarDatos = "INSERT INTO ordenes ('Producto', 'Cantidad', 'Fecha') VALUES ('Selector', 'Contador', 'Fecha')";
+            $insertarDatos = "INSERT INTO ordenes ('Producto', 'Cantidad', 'Fecha') VALUES ('$Selector', '$Contador', '$Fecha')";
             }
-        }
         echo "<div class='alert alert-2-success'>";
             echo "<h3 class='alert-title'>Orden creada correctamente</h3>";
             echo "<p class='alert-content'>Se ha agregado la orden {id}</p>";
