@@ -93,6 +93,11 @@ if (!$conn) {
                             <!--<input type="text" name="plato" id="plato"  placeholder="Platillo">-->
                         </div>
                         
+                        <div class="nueva_orden_add_dish_considerations_container">
+                            <span>Consideraciones:</span>
+                            <textarea id="consideracion" name="consideracion" class="nueva_orden_add_dish_considerations" placeholder="Consideraciones"></textarea>
+                        </div>
+
                         <div class="nueva_orden_add_dish_qty_container">
                             <span>Cantidad (por defecto es 5):</span>
                             <input id="contador" name="contador" type="number" value="5">
@@ -130,14 +135,15 @@ if (!$conn) {
         if (isset($_POST['send'])) {
             $Selector = $_POST ['plato'];
             $Contador = $_POST ['contador'];
-            
+            $Consideracion = $_POST ['consideracion'];
+
             if($Selector=='0'){
                 echo "<script language='JavaScript'> alert('Debe Seleccionar que producto desea')</script>";
             } else {
             if($Contador<='0'){
                 echo "<script language='JavaScript'> alert('Debe llevar por lo menos una unidad')</script>";
             } else {
-            $sql = "INSERT INTO ordenes (Producto, Cantidad) VALUES ('$Selector', '$Contador')";
+            $sql = "INSERT INTO ordenes (Producto, Cantidad, Consideraciones) VALUES ('$Selector', '$Contador', '$Consideracion')";
             //$fila = "SELECT 'ID' FROM ordenes"
             $res=mysqli_query($conn,$sql);
             if($res){
