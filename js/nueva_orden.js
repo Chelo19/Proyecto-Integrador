@@ -1,4 +1,4 @@
-const BtnPlatillo = document.querySelector('.nueva_orden_add_dish_send');
+const BtnPlatillo = document.querySelector('.nueva_orden_add_dish_send_add');
 const orden = document.createElement('span');
 const precio = document.createElement('span');
 const cobrar = document.createElement('span');
