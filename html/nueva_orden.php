@@ -2,7 +2,7 @@
 $host = 'localhost';
 $username = 'root';
 $password = '';
-$database = 'Proint';
+$database = 'proint';
 
 // Conexión a la base de datos
 $conn = mysqli_connect($host, $username, $password, $database);
@@ -81,16 +81,16 @@ if (!$conn) {
                     <div class="nueva_orden_add_dish_container">
                         <div class="nueva_orden_add_dish_select_container">
                             <span>Platillo:</span>
-                            <!--<select id="selector" name="selector" for="selector" class="nueva_orden_add_dish_select">
+                            <select id="plato" name="plato" for="plato" class="nueva_orden_add_dish_select">
                                 <option value="0">Seleccione una opción</option>
-                                Valores antiguos en orden: 50, 60, 30, 45, 40
+                                <!--Valores antiguos en orden: 50, 60, 30, 45, 40-->
                                 <option value="Tacos de Trompo">Tacos de trompo</option>
                                 <option value="Tacos de Bistec">Tacos de bistec</option>
                                 <option value="Sopes">Sopes</option>
                                 <option value="Enchiladas">Enchiladas</option>
                                 <option value="Quesadillas">Quesadillas</option>
-                            </select>-->
-                            <input type="text" name="selector" id="selector"  placeholder="Platillo">
+                            </select>
+                            <!--<input type="text" name="plato" id="plato"  placeholder="Platillo">-->
                         </div>
                         
                         <div class="nueva_orden_add_dish_qty_container">
@@ -126,34 +126,31 @@ if (!$conn) {
         </div>
 
         <?php 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $timezone = 'America/Monterrey';
-        $date = new DateTime('now', new DateTimeZone($timezone));
-        $Fecha = $date -> format('Y-m-d');
-        $Selector = $_POST ['selector'];
-        $Contador = $_POST ['contador'];
-        
+    if(!empty($_POST['send'])){
+        if (isset($_POST['send'])) {
+            $Selector = $_POST ['plato'];
+            $Contador = $_POST ['contador'];
             
-        /*$insertarDatos = "INSERT INTO usuarios VALUES('', '$Usuario', '$Contraseña')";
-        $exInsertar = mysqli_query ($conn,$insertarDatos);*/
-
-            /*$sql = $conn->query("SELECT * FROM usuarios where Usuario='$Usuario' and Contraseña='$Contraseña'");
-
-            if($datos=$sql->fetch_object()){
-                header("location:nueva_orden.php");
-            }else{
-                echo '<div class="alert alert-danger">Los datos son incorrectos</div>';
-            }*/
-            //CURRENT_TIMESTAMP
-            $insertarDatos = "INSERT INTO ordenes ('Producto', 'Cantidad', 'Fecha') VALUES ('$Selector', '$Contador', '$Fecha')";
+            if($Selector=='0'){
+                echo "<script language='JavaScript'> alert('Debe Seleccionar que producto desea')</script>";
+            } else {
+            if($Contador<='0'){
+                echo "<script language='JavaScript'> alert('Debe llevar por lo menos una unidad')</script>";
+            } else {
+            $sql = "INSERT INTO ordenes (Producto, Cantidad) VALUES ('$Selector', '$Contador')";
+            //$fila = "SELECT 'ID' FROM ordenes"
+            $res=mysqli_query($conn,$sql);
+            if($res){
+                echo "<script language='JavaScript'> alert('Orden creada correctamente')</script>";
             }
-        echo "<div class='alert alert-2-success'>";
-            echo "<h3 class='alert-title'>Orden creada correctamente</h3>";
-            echo "<p class='alert-content'>Se ha agregado la orden {id}</p>";
-        echo "</div>";
+            }
+        }
+    }
+}
     ?>
 
         <script>
+            /*
             // Capturar el evento de envío del formulario
 document.getElementById('nOrd').addEventListener('submit', function(event) {
   event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
@@ -175,7 +172,7 @@ document.getElementById('nOrd').addEventListener('submit', function(event) {
       // Manejar el error, como mostrar un mensaje de error al usuario
     });
 });
-
+*/
         </script>
     </body>
 

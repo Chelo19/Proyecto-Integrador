@@ -2,7 +2,7 @@
 $host = 'localhost';
 $username = 'root';
 $password = '';
-$database = 'Proint';
+$database = 'proint';
 
 // Conexión a la base de datos
 $conn = mysqli_connect($host, $username, $password, $database);
