@@ -89,6 +89,7 @@ if (!$conn) {
                             echo "<table>";
                             while ($fila = mysqli_fetch_assoc($resultado)){
                                 echo "<tr>";
+                                echo "<td>" , "<input type='image' src='../src/check.png' width='30px' height='30px' alt='send' name='send' id='send'>" , " </td>";
                                 echo "<td>" , $fila['Producto'] , " </td>";
                                 echo "<td> " , $fila['Cantidad'] , "</td>";
                                 echo "<td> " , $fila['Fecha'] , "</td>";
@@ -107,19 +108,32 @@ if (!$conn) {
                 </div>
             </div>
         </div>
+        <script> src="../js/confirmación.js" </script>
     </body>
 </html>
 
 <?php
-/*
-            $sql = 'SELECT * FROM Ordenes'
-            $res = mysqli_query($conn, $sql);
-            while ($fila = mysqli_fetch_assoc($res)) {
-                echo 'ID: ' . $fila['ID'] . ', Producto: ' . $fila['Producto'] . 'Cantidad: ' . $fila['Cantidad'] . '<br>';
-            }
 
+//$sql2 = "DELETE FROM ordenes WHERE 0";  
+$id = $_GET["ID"] ?? null;
+$eliminar = "DELETE FROM ordenes WHERE ID = '$id' ";
+$res=mysqli_query($conn, $eliminar);
+
+    if(isset($_POST['send'])){
+        if($eliminar){
+            echo "<script languaje='JavaScript'>alert('Sample Text'); location.assign('ordenes.php');</script>";
+        } else {
+            echo "<script languaje='JavaScript'>alert('Sample Textn't') </script>";
+        }
+            
             mysqli_free_result($res);
 
             // Cerrar la conexión
-            mysqli_close($conn);*/
+            mysqli_close($conn);
+            
+            /*$res = mysqli_query($conn, $sql);
+            while ($fila = mysqli_fetch_assoc($res)) {
+                echo 'ID: ' . $fila['ID'] . ', Producto: ' . $fila['Producto'] . 'Cantidad: ' . $fila['Cantidad'] . '<br>';
+            }*/
+            }
 ?>
