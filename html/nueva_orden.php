@@ -133,6 +133,7 @@ if (!$conn) {
         <?php 
     if(!empty($_POST['send'])){
         if (isset($_POST['send'])) {
+            
             $Selector = $_POST ['plato'];
             $Contador = $_POST ['contador'];
             $Consideracion = $_POST ['consideracion'];
@@ -143,12 +144,53 @@ if (!$conn) {
             if($Contador<='0'){
                 echo "<script language='JavaScript'> alert('Debe llevar por lo menos una unidad')</script>";
             } else {
-            $sql = "INSERT INTO ordenes (Producto, Cantidad, Consideraciones) VALUES ('$Selector', '$Contador', '$Consideracion')";
+                $cont2 = $_REQUEST['contador'];
+                /*if ($Selector=='Tacos de Trompo'){
+                    $Precio = $cont2*10;
+                } else {
+                    if($Selector=='Tacos de Bistec'){
+                        $Precio = $cont2*12;
+                    } else {
+                        if($Selector=='Sopes'){
+                            $Precio = $cont2*6;
+                        } else {
+                            if($Selector=='Enchiladas'){
+                                $Precio = $cont2*9;
+                            } else { 
+                                if($Selector=='Quesadillas'){
+                                    $Precio = $cont2*8;
+                                } else {
+                                    echo "<script language='JavaScript'> alert('Ha ocurrido un error, solucionalo pendejo')</script>";
+                                }
+                            }
+                        }
+                    }
+                }*/
+                switch ($cont2){
+                    case "Tacos de Trompo":
+                        $Precio = 10;
+                    break;
+                    case "Tacos de Bistec":
+                        $Precio = 12;
+                    break;
+                    case "Sopes":
+                        $Precio = 6;
+                    break;
+                    case "Enchiladas":
+                        $Precio = 9;
+                    break;
+                    case "Quesadillas":
+                        $Precio = 8;
+                    break;
+                }
+                $suma = $Precio*$Contador;
+                //De momento la suma no funciona correctamente, pero la línea de abajo si detecta la variable de php
+            $sql = "INSERT INTO ordenes (Producto, Cantidad, Precio, Consideraciones) VALUES ('$Selector', '$Contador', '$suma', '$Consideracion' )";
             //$fila = "SELECT 'ID' FROM ordenes"
             $res=mysqli_query($conn,$sql);
-            if($res){
-                echo "<script language='JavaScript'> alert('Orden creada correctamente')</script>";
-            }
+                if($res){
+                    echo "<script language='JavaScript'> alert('Orden creada correctamente')</script>";
+                }
             }
         }
     }

@@ -82,7 +82,7 @@ if (!$conn) {
                         </a>
 
                         <?php 
-                        
+                        //Aquí es donde se muestra la información de la base de datos
                         $sql = "SELECT * FROM ordenes";
                         $resultado = mysqli_query($conn, $sql);
                         if(mysqli_num_rows($resultado) > 0){
@@ -90,8 +90,26 @@ if (!$conn) {
                             while ($fila = mysqli_fetch_assoc($resultado)){
                                 echo "<tr>";
                                 echo "<td>" , "<input type='image' src='../src/check.png' width='30px' height='30px' alt='send' name='send' id='send'>" , " </td>";
+                                echo "<td> #" , $fila['ID'] , " </td>";
                                 echo "<td>" , $fila['Producto'] , " </td>";
-                                echo "<td> " , $fila['Cantidad'] , "</td>";
+                                echo "<td> $" , $fila['Precio'] , "</td>";
+                                //Probablemente había una forma menos tediosa de arreglar el formato, pero esto funciona
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
                                 echo "<td> " , $fila['Fecha'] , "</td>";
                                 echo "</tr>";
                                // echo
@@ -113,13 +131,17 @@ if (!$conn) {
 </html>
 
 <?php
-
-//$sql2 = "DELETE FROM ordenes WHERE 0";  
+//Aquí el intento de eliminar datos
+/*$sql2 = "DELETE FROM ordenes WHERE 0";*/
 $id = $_GET["ID"] ?? null;
+echo "$id";
+//echo "<script languaje='JavaScript'>alert('Sample Text'); location.assign('ordenes.php');</script>";
+//mysqli_free_result($id);
 $eliminar = "DELETE FROM ordenes WHERE ID = '$id' ";
 $res=mysqli_query($conn, $eliminar);
 
     if(isset($_POST['send'])){
+        echo "<script languaje='JavaScript'>alert('Sample Text'); location.assign('ordenes.php');</script>";
         if($eliminar){
             echo "<script languaje='JavaScript'>alert('Sample Text'); location.assign('ordenes.php');</script>";
         } else {
