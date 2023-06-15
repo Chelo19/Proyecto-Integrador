@@ -20,9 +20,11 @@ if (!$conn) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Órdenes</title>
+        <link rel="stylesheet" href="../css/home.css">
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/output.css">
         <link rel="stylesheet" href="../css/historial.css">
+        <link rel="stylesheet" href="../css/login.css">
     </head>
 
     <script type="text/javascript">
@@ -73,6 +75,15 @@ if (!$conn) {
             
             <div class="content-history">
                 <span class="history-title">Órdenes</span>
+                <form class="login-container-input-box" action="#" method="POST">
+                    <div class="login-container-input2">
+                        <input type="text" name="orden" id="orden" placeholder="Pedido">
+                        <input type="submit" name="send" id="send" class="nueva_orden_add_dish_select2" value="Completar">
+                        <input type="submit" name="del" id="del" class="nueva_orden_add_dish_select2" value="Cancelar">
+                        <input type="reset" value="Limpiar texto">
+                    </div>
+                </form>
+
                 <div class="history-container">
                     <div class="history-container-titles" id="history-container-title1">Orden</div>
                     <div class="history-container-titles" id="history-container-title2">Total</div>
@@ -89,11 +100,36 @@ if (!$conn) {
                             echo "<table>";
                             while ($fila = mysqli_fetch_assoc($resultado)){
                                 echo "<tr>";
-                                echo "<td>" , "<input type='image' src='../src/check.png' width='30px' height='30px' alt='send' name='send' id='send'>" , " </td>";
+                                //echo "<td>" , "<input type='image' src='../src/check.png' width='30px' height='30px' alt='send' name='send' id='send'>" , " </td>";
                                 echo "<td> #" , $fila['ID'] , " </td>";
+                                echo "<td>" , $fila['Cantidad'] , " </td>";
                                 echo "<td>" , $fila['Producto'] , " </td>";
+                                echo "<td> (" , $fila['Consideraciones'] , ") </td>";
                                 echo "<td> $" , $fila['Precio'] , "</td>";
                                 //Probablemente había una forma menos tediosa de arreglar el formato, pero esto funciona
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
                                 echo "<td>" , " </td>";
                                 echo "<td>" , " </td>";
                                 echo "<td>" , " </td>";
@@ -121,9 +157,7 @@ if (!$conn) {
                         
                     </div>
                 </div>
-                <div class="nueva_orden_add_dish_send">
-                    <a href="nueva_orden.php" >Agregar Platillo</a>
-                </div>
+
             </div>
         </div>
         <script> src="../js/confirmación.js" </script>
@@ -131,31 +165,56 @@ if (!$conn) {
 </html>
 
 <?php
-//Aquí el intento de eliminar datos
-/*$sql2 = "DELETE FROM ordenes WHERE 0";*/
-$id = $_GET["ID"] ?? null;
-echo "$id";
-//echo "<script languaje='JavaScript'>alert('Sample Text'); location.assign('ordenes.php');</script>";
-//mysqli_free_result($id);
-$eliminar = "DELETE FROM ordenes WHERE ID = '$id' ";
-$res=mysqli_query($conn, $eliminar);
+if(!empty($_POST['send']) or !empty($_POST['del'])){
+$id = $_POST['orden'];
 
-    if(isset($_POST['send'])){
-        echo "<script languaje='JavaScript'>alert('Sample Text'); location.assign('ordenes.php');</script>";
-        if($eliminar){
-            echo "<script languaje='JavaScript'>alert('Sample Text'); location.assign('ordenes.php');</script>";
-        } else {
-            echo "<script languaje='JavaScript'>alert('Sample Textn't') </script>";
-        }
+if(empty($_POST['orden'])){
+    echo "<script languaje='JavaScript'>alert('Debe introducir una orden primero') </script>";
+} else {
+    if(isset($_POST['send']) or isset($_POST['del']) != $id){
+        echo "<script languaje='JavaScript'>alert('Debe introducir un número de orden válido') </script>";
+    }
+        
+        if(isset($_POST['send'])){
+            $sel = $id;
+            $sql2 = "SELECT `ID`, `Producto`, `Cantidad`, `Precio`, `Consideraciones`, `Fecha` FROM `ordenes` WHERE ID = $sel";
+            $resel = mysqli_query($conn, $sql2);
+
+            // Insertar los datos en la tabla de destino
+            //if(mysqli_num_rows($resel) == $id){
+                //$id2 = $fila['ID'];
+                if(isset($row['Producto'])){
+                $prod = $row['Producto'];
+                }
+                if(isset($row['Cantidad'])){
+                $cant = $row['Cantidad'];
+                }
+                if(isset($row['Precio'])){
+                $price = $row['Precio'];
+                }
+                if(isset($row['Consideraciones'])){
+                $cons = $row['Consideraciones'];
+                }
+                if(isset($row['Fecha'])){
+                $date = $row['Fecha'];
+                }
+            //}
+            echo "<script languaje='JavaScript'>alert('La orden se completó correctamente') </script>";
+            $agregar = "INSERT INTO historial (ID, Producto, Cantidad, Precio, Consideraciones, Fecha) VALUES ('$prod', '$cant', '$price', '$cons', '$date')";
+            mysqli_query($conn, $agregar);
+
+        } 
+        if(isset($_POST['del'])){
+            echo "<script languaje='JavaScript'>alert('La orden se canceló correctamente') </script>";
             
-            mysqli_free_result($res);
+        }
+    }
 
-            // Cerrar la conexión
+$eliminar = "DELETE FROM ordenes WHERE ID = '$id' ";
+
+$res=mysqli_query($conn, $eliminar);
             mysqli_close($conn);
             
-            /*$res = mysqli_query($conn, $sql);
-            while ($fila = mysqli_fetch_assoc($res)) {
-                echo 'ID: ' . $fila['ID'] . ', Producto: ' . $fila['Producto'] . 'Cantidad: ' . $fila['Cantidad'] . '<br>';
-            }*/
-            }
+}
+      
 ?>

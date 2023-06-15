@@ -1,3 +1,18 @@
+<?php
+$host = 'localhost';
+$username = 'root';
+$password = '';
+$database = 'proint';
+
+// Conexión a la base de datos
+$conn = mysqli_connect($host, $username, $password, $database);
+
+// Verificar la conexión
+if (!$conn) {
+    die('Error al conectar a la base de datos: ' . mysqli_connect_error());
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -64,16 +79,76 @@
                     <div class="history-container-titles" id="history-container-title2">Total</div>
                     <div class="history-container-titles" id="history-container-title3">Fecha</div>
                     <div class="history-container-orders">
-                        <a href="orden_individual.html" class="history-container-order">
-                            <span id="history-container-order-title1">{REFERENCIA ORDEN}</span>
-                            <span id="history-container-order-title2">{TOTAL}</span>
-                            <span id="history-container-order-title3">{FECHA}</span>
-                        </a>
-                        <a href="orden_individual.html" class="history-container-order">
-                            <span id="history-container-order-title1">{REFERENCIA ORDEN}</span>
-                            <span id="history-container-order-title2">{TOTAL}</span>
-                            <span id="history-container-order-title3">{FECHA}</span>
-                        </a>
+                    <?php 
+                        //Aquí es donde se muestra la información de la base de datos
+                        $sql = "SELECT * FROM historial";
+                        $resultado = mysqli_query($conn, $sql);
+                        if(mysqli_num_rows($resultado) > 0){
+                            echo "<table>";
+                            while ($fila = mysqli_fetch_assoc($resultado)){
+                                echo "<tr>";
+                                //echo "<td>" , "<input type='image' src='../src/check.png' width='30px' height='30px' alt='send' name='send' id='send'>" , " </td>";
+                                echo "<td> #" , $fila['ID'] , " </td>";
+                                echo "<td>" , $fila['Producto'] , " </td>";
+                                echo "<td> (" , $fila['Consideraciones'] , ") </td>";
+                                echo "<td> $" , $fila['Precio'] , "</td>";
+                                //Probablemente había una forma menos tediosa de arreglar el formato, pero esto funciona
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td>" , " </td>";
+                                echo "<td> " , $fila['Fecha'] , "</td>";
+                                echo "</tr>";
+                               // echo
+                            }
+                            echo "</table>";
+                        }
+
+                        ?>
                     </div>
                 </div>
             </div>

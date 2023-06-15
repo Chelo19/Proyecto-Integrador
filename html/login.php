@@ -66,11 +66,11 @@ if (!$conn) {
         $Contraseña = $_POST ['contraseña'];
 
         if(empty($_POST["usuario"]) and empty($_POST["contraseña"])){
-            echo '<div class="alert alert-danger">Los campos están vacíos </div>';
+            echo "<script languaje='JavaScript'>alert('Los campos están vacíos')</script>";
         } else {
             
         if(empty($_POST["usuario"]) or empty($_POST["contraseña"])){
-            echo '<div class="alert alert-danger">Hay un campo vacío </div>';
+            echo "<script languaje='JavaScript'>alert('Hay un campo vacío')</script>";
         } else {
             
         if(isset($_POST['send'])){
@@ -83,7 +83,7 @@ if (!$conn) {
             if($datos=$sql->fetch_object()){
                 header("location:home.php");
             }else{
-                echo '<div class="alert alert-danger">Los datos son incorrectos</div>';
+                echo "<script languaje='JavaScript'>alert('Los campos son incorrectos')</script>";
             }
         }
         }

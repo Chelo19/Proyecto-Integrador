@@ -84,18 +84,18 @@ if (!$conn) {
                             <select id="plato" name="plato" for="plato" class="nueva_orden_add_dish_select">
                                 <option value="0">Seleccione una opción</option>
                                 <!--Valores antiguos en orden: 50, 60, 30, 45, 40-->
-                                <option value="Tacos de Trompo">Tacos de trompo</option>
-                                <option value="Tacos de Bistec">Tacos de bistec</option>
-                                <option value="Sopes">Sopes</option>
-                                <option value="Enchiladas">Enchiladas</option>
-                                <option value="Quesadillas">Quesadillas</option>
+                                <option value="1">Tacos de trompo</option>
+                                <option value="2">Tacos de bistec</option>
+                                <option value="3">Sopes</option>
+                                <option value="4">Enchiladas</option>
+                                <option value="5">Quesadillas</option>
                             </select>
                             <!--<input type="text" name="plato" id="plato"  placeholder="Platillo">-->
                         </div>
                         
                         <div class="nueva_orden_add_dish_considerations_container">
                             <span>Consideraciones:</span>
-                            <textarea id="consideracion" name="consideracion" class="nueva_orden_add_dish_considerations" placeholder="Consideraciones"></textarea>
+                            <textarea id="consideracion" name="consideracion" class="nueva_orden_add_dish_considerations" placeholder="Consideraciones (Dejar vacío en caso de no haberlas)"></textarea>
                         </div>
 
                         <div class="nueva_orden_add_dish_qty_container">
@@ -134,59 +134,53 @@ if (!$conn) {
     if(!empty($_POST['send'])){
         if (isset($_POST['send'])) {
             
-            $Selector = $_POST ['plato'];
+            $sel = $_POST ['plato'];
             $Contador = $_POST ['contador'];
             $Consideracion = $_POST ['consideracion'];
 
-            if($Selector=='0'){
+            if($sel=='0'){
                 echo "<script language='JavaScript'> alert('Debe Seleccionar que producto desea')</script>";
             } else {
             if($Contador<='0'){
                 echo "<script language='JavaScript'> alert('Debe llevar por lo menos una unidad')</script>";
             } else {
                 $cont2 = $_REQUEST['contador'];
-                /*if ($Selector=='Tacos de Trompo'){
-                    $Precio = $cont2*10;
-                } else {
-                    if($Selector=='Tacos de Bistec'){
-                        $Precio = $cont2*12;
-                    } else {
-                        if($Selector=='Sopes'){
-                            $Precio = $cont2*6;
-                        } else {
-                            if($Selector=='Enchiladas'){
-                                $Precio = $cont2*9;
-                            } else { 
-                                if($Selector=='Quesadillas'){
-                                    $Precio = $cont2*8;
-                                } else {
-                                    echo "<script language='JavaScript'> alert('Ha ocurrido un error, solucionalo pendejo')</script>";
-                                }
-                            }
-                        }
-                    }
-                }*/
-                switch ($cont2){
-                    case "Tacos de Trompo":
+
+                //Precios en orden: 50, 60, 30, 45, 40
+                switch ($sel){
+                    case "1":
                         $Precio = 10;
+                        $Selector = "Tacos de Trompo";
                     break;
-                    case "Tacos de Bistec":
+
+                    case "2":
                         $Precio = 12;
+                        $Selector = "Tacos de Bistec";
                     break;
-                    case "Sopes":
+
+                    case "3":
                         $Precio = 6;
+                        $Selector = "Sopes";
                     break;
-                    case "Enchiladas":
+
+                    case "4":
                         $Precio = 9;
+                        $Selector = "Enchiladas";
                     break;
-                    case "Quesadillas":
+
+                    case "5":
                         $Precio = 8;
+                        $Selector = "Quesadillas";
                     break;
+
+                }
+                if($Consideracion == ''){
+                    $Consideracion = "Regular";
                 }
                 $suma = $Precio*$Contador;
-                //De momento la suma no funciona correctamente, pero la línea de abajo si detecta la variable de php
+                
             $sql = "INSERT INTO ordenes (Producto, Cantidad, Precio, Consideraciones) VALUES ('$Selector', '$Contador', '$suma', '$Consideracion' )";
-            //$fila = "SELECT 'ID' FROM ordenes"
+
             $res=mysqli_query($conn,$sql);
                 if($res){
                     echo "<script language='JavaScript'> alert('Orden creada correctamente')</script>";
@@ -196,32 +190,6 @@ if (!$conn) {
     }
 }
     ?>
-
-        <script>
-            /*
-            // Capturar el evento de envío del formulario
-document.getElementById('nOrd').addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
-
-  // Obtener los valores de los campos del formulario
-  const nombre = document.getElementById('nombre').value;
-  const email = document.getElementById('email').value;
-
-  // Enviar los datos a la base de datos de Supabase
-  supabase
-    .from('NOMBRE_DE_LA_TABLA')
-    .insert([{ nombre, email }])
-    .then(response => {
-      console.log('Datos enviados correctamente');
-      // Hacer algo después de enviar los datos, como redireccionar o mostrar un mensaje de éxito
-    })
-    .catch(error => {
-      console.error('Error al enviar los datos:', error);
-      // Manejar el error, como mostrar un mensaje de error al usuario
-    });
-});
-*/
-        </script>
     </body>
 
 </html>
