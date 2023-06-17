@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/output.css">
         <link rel="stylesheet" href="../css/historial.css">
+        <link rel="stylesheet" href="../css/orden_individual.css">
         <!--Si les da error, hagan lo siguiente un comentario-->
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
         <script>
@@ -70,21 +71,21 @@
                             <span class="nueva_orden_ticket_final_items_title_left">Platillo</span>
                             <span>Precio</span>
                         </div>
-                        <div class="nueva_orden_ticket_final_items">
-                            <div class="nueva_orden_ticket_final_item">
-                                <span>Tacos</span>
-                                <span>$140</span>
-                            </div>
+                        <div class="nueva_orden_ticket_final_items" id="gallery">
                         </div>
                         <div id="PrecioTotal" class="nueva_orden_ticket_final_items_title">
                             <span class="nueva_orden_ticket_final_items_title_left">Total</span>
+                            <span class="nueva_orden_ticket_final_items_title_left" id="total_span"></span>
                         </div>
                     </div>
-                    <div class="nueva_orden_add_dish_send">
-                        <a href="history.html">Regresar</a>
+                    <div class="orden_individual_buttons">
+                        <a id="orden_individual_end_button" href="javascript:void(0)">Finalizar Orden</a>
+                        <a class="orden_individual_return_button" href="ordenes.html">Regresar</a>
                     </div>
                 </div>
             </div>
         </div>
+        <script type="module" src="../js/client.js"></script>
+        <script type="module" src="../js/orden_individual.js"></script>
     </body>
 </html>

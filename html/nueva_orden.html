@@ -8,32 +8,6 @@
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/output.css">
         <link rel="stylesheet" href="../css/nueva_orden.css">
-        <script href="../js/nueva_orden.js"></script>
-
-        <!--Si les da error, hagan lo siguiente un comentario-->
-        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-        
-        <script>
-        
-        import { createClient } from '@supabase/supabase-js'
-
-        const supabaseUrl = 'https://vemlyvaobeituwkpsbvy.supabase.co'
-        const supabaseKey = process.env.SUPABASE_KEY
-        const supabase = createClient(supabaseUrl, supabaseKey)
-        
-        supabase
-        .from('Ordenes')
-        .select('Contenido')
-        .then(response => {
-            const data = response.data;
-            console.log(data);
-        })
-        .catch(error => {
-            console.error(error);
-        })
-        </script>
-
-        <!--Hasta aquí c:-->
     </head>
     <body class="main-bg">
         <div class="alert alert-2-success">
@@ -77,9 +51,9 @@
                             <span>Platillo:</span>
                             <select id="selector" class="nueva_orden_add_dish_select">
                                 <option></option>
-                                <option value="50">Tacos de trompo</option>
-                                <option value="60">Tacos de bistec</option>
-                                <option value="30">Sopes</option>
+                                <option value="1">Tacos de trompo</option>
+                                <option value="2">Tacos de bistec</option>
+                                <option value="3">Sopes</option>
                                 <option value="45">Enchiladas</option>
                                 <option value="40">Quesadillas</option>
                             </select>
@@ -93,7 +67,7 @@
                             <input id="contador" type="number" value="5">
                         </div>
                         <div class="nueva_orden_add_dish_send nueva_orden_add_dish_send_add">
-                            <span>Agregar Platillo</span>
+                            <span id="new_order_dish_button">Agregar Platillo</span>
                         </div>
                     </div>
                 </div>
@@ -104,52 +78,23 @@
                                 <span class="nueva_orden_ticket_final_items_title_left">Platillo</span>
                                 <span>Precio</span>
                             </div>
-                            <div class="nueva_orden_ticket_final_items">
-                                <div class="nueva_orden_ticket_final_item">
-                                    <span class="nueva_orden_ticket_final_item_name">5 Tacos de bistec</span>
-                                    <span class="nueva_orden_ticket_final_item_name">$119</span>
-                                </div>
-                                <div class="nueva_orden_ticket_final_item">
-                                    <span class="nueva_orden_ticket_final_item_name">3 Tacos de trompo</span>
-                                    <span class="nueva_orden_ticket_final_item_name">$67</span>
-                                </div>
+                            <div class="nueva_orden_ticket_final_items" id="gallery">
                             </div>
                             <div id="PrecioTotal" class="nueva_orden_ticket_final_items_title">
                                 <span class="nueva_orden_ticket_final_items_title_left">Total</span>
+                                <span class="nueva_orden_ticket_final_items_title_left" id="total"></span>
                             </div>
-                            
                         </div>
-                        <div class="nueva_orden_add_dish_send">
-                            <!-- <input href="nueva_orden.html" type="submit" value="Confirmar Pedido"> -->
-                            <a href="nueva_orden.html">Confirmar Pedido</a>
+                            <div class="nueva_orden_add_dish_send">
+                                <!-- <input href="nueva_orden.html" type="submit" value="Confirmar Pedido"> -->
+                                <a id="new_order_button">Confirmar Pedido</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
-        <script>
-            // Capturar el evento de envío del formulario
-document.getElementById('nOrd').addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
-
-  // Obtener los valores de los campos del formulario
-  const nombre = document.getElementById('nombre').value;
-  const email = document.getElementById('email').value;
-
-  // Enviar los datos a la base de datos de Supabase
-  supabase
-    .from('NOMBRE_DE_LA_TABLA')
-    .insert([{ nombre, email }])
-    .then(response => {
-      console.log('Datos enviados correctamente');
-      // Hacer algo después de enviar los datos, como redireccionar o mostrar un mensaje de éxito
-    })
-    .catch(error => {
-      console.error('Error al enviar los datos:', error);
-      // Manejar el error, como mostrar un mensaje de error al usuario
-    });
-});
-
-        </script>
+        <script type="module" src="../js/client.js"></script>
+        <script type="module" src="../js/nueva_orden_js.js"></script>
     </body>
 </html>
