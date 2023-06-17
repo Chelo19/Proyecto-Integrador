@@ -22,7 +22,8 @@ const getOrdenes = async () => {
     const { data, error } = await supabase
     .from('ordenes')
     .select('*')
-    .eq('isdone', false);
+    .eq('isdone', false)
+    .order('id', { ascending: false });
     if(data.length > 0){
         getEntradas(data);
     }
