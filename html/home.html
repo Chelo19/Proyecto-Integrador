@@ -54,8 +54,8 @@
                     <div class="sidebar-user-img">
                         <img src="../src/user-icon.png"/>
                     </div>
-                    <div class="sidebar-user-name">
-                        Marcelo
+                    <div class="sidebar-user-name" id="user_name">
+                        Usuario
                     </div>
                 </div>
                 <div class="sidebar-tools">
@@ -74,13 +74,17 @@
                     <a href="history.html" class="sidebar-tool">
                         Historial
                     </a>
+                    <div class="horizontal-gap"></div>
+                    <a class="sidebar-tool" id="logout">
+                        Cerrar sesion
+                    </a>
                 </div>
             </div>
             <!-- Sidebar -->
             <div class="content">
                 <div class="home_bg">
                     <div class="home_display">
-                        <span class="home_title">Es un gusto verte de nuevo, Marcelo</span>
+                        <span class="home_title" id="welcome_name">Es un gusto verte de nuevo, </span>
                         <span class="home_text" id="fecha">2 de Junio del 2023</span>
                         <div class="home_indicators_display">
                             <div class="home_indicators_container">
@@ -111,5 +115,6 @@
         </div>
         <script type="module" src="../js/client.js"></script>
         <script type="module" src="../js/home.js"></script>
+        <script type="module" src="../js/logout.js"></script>
     </body>
 </html>

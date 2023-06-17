@@ -32,10 +32,10 @@
         <title>Login</title>
     </head>
     <body class="login-bg">
-        <div class="alert alert-2-success">
+        <!-- <div class="alert alert-2-success">
             <h3 class="alert-title">Inicio de sesión correcto</h3>
             <p class="alert-content">¡Bienvenido Marcelo!</p>
-        </div>
+        </div> -->
         <div class="login-component">
             <div class="login-container">
                 <div class="login-container-title">
@@ -46,24 +46,26 @@
                         <span>Usuario</span>
                         <div class="login-container-input">
                             <img src="../src/user-icon-mini.png"/>
-                            <input placeholder="Usuario"/>
+                            <input placeholder="Usuario" id="username"/>
                         </div>
                     </div>
                     <div class="login-container-input-div">
                         <span>Contraseña</span>
                         <div class="login-container-input">
                             <img src="../src/lock-icon-mini.png"/>
-                            <input placeholder="Contraseña"/>
+                            <input type="password" placeholder="Contraseña" id="password"/>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="login-component">
-            <button class="login-container-send">Enviar</button>
+            <button class="login-container-send" id="login">Enviar</button>
         </div>
         <div class="login-component">
             <span class="login-title">Inicia sesión para comenzar a usar el sistema</span>
         </div>
+        <script type="module" src="../js/client.js"></script>
+        <script type="module" src="../js/login.js"></script>
     </body>
 </html>

@@ -1,5 +1,18 @@
 import {supabase} from './client.js'
 
+const user_name = document.getElementById('user_name');
+async function getUser(){
+    const { data: { user } } = await supabase.auth.getUser();
+    if(user){
+        const { data, error } = await supabase
+        .from('usuarios')
+        .select('*')
+        .eq('guid', user.id);
+        console.log(data[0]);
+        user_name.innerHTML = data[0].name;
+    }
+}
+
 document.getElementById("new_order_button").addEventListener("click", addOrden);
 document.getElementById("new_order_dish_button").addEventListener("click", addEntrada);
 
@@ -9,6 +22,7 @@ window.onload = async function() {
     .from('platillos')
     .select('*');
     platillos = data;
+    getUser();
 };
 
 const gallery = document.getElementById('gallery');

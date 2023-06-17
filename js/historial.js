@@ -1,7 +1,21 @@
 import {supabase} from './client.js'
 
+const user_name = document.getElementById('user_name');
+async function getUser(){
+    const { data: { user } } = await supabase.auth.getUser();
+    if(user){
+        const { data, error } = await supabase
+        .from('usuarios')
+        .select('*')
+        .eq('guid', user.id);
+        console.log(data[0]);
+        user_name.innerHTML = data[0].name;
+    }
+}
+
 window.onload = async function() {
     getOrdenes();
+    getUser();
 };
 
 const getOrdenes = async () => {
