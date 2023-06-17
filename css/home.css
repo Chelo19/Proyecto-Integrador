@@ -88,14 +88,18 @@
 .home_nueva_orden_button{
     transition: 1s;
     width: 300px;
-    height: 40px;
+    height: 50px;
     background-color: rgb(2, 172, 2);
     padding: 3px 5px;
-    font-size: 20px;
+    font-size: 22px;
     color: #fff;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
 }
 
 .home_nueva_orden_button:hover{

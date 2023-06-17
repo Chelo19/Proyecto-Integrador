@@ -81,37 +81,35 @@
                 <div class="home_bg">
                     <div class="home_display">
                         <span class="home_title">Es un gusto verte de nuevo, Marcelo</span>
-                        <span class="home_text">2 de Junio del 2023</span>
+                        <span class="home_text" id="fecha">2 de Junio del 2023</span>
                         <div class="home_indicators_display">
                             <div class="home_indicators_container">
-                                <div class="home_indicator_title_container">
-                                    <span class="home_indicator_title">Hoy</span>
+                                <div class="home_indicator">
+                                    <a class="home_indicator_item" href="ordenes.html" id="pendientes">
+                                        Órdenes pendientes 
+                                    </a>
                                 </div>
                                 <div class="home_indicator">
-                                    <span class="home_indicator_item">Órdenes pendientes | 4</span>
-                                </div>
-                                <div class="home_indicator">
-                                    <span class="home_indicator_item">Órdenes completadas | 10</span>
+                                    <a class="home_indicator_item" href="history.html" id="completadas">
+                                        Órdenes completadas 
+                                    </a>
                                 </div>
                             </div>
                             <div class="home_indicators_container">
-                                <div class="home_indicator_title_container">
-                                    <span class="home_indicator_title">Esta semana</span>
-                                </div>
-                                <div class="home_indicator">
-                                    <span class="home_indicator_item">Órdenes completadas | 105</span>
-                                </div>
+                                <a href="nueva_orden.html" class="home_nueva_orden_button" id="button_350px">
+                                    Nueva orden
+                                </a>
                                 <a href="history.html" class="home_nueva_orden_button" id="button_350px">
                                     Ver historial
                                 </a>
                             </div>
                         </div>
-                        <a href="nueva_orden.html" class="home_nueva_orden_button">
-                            Nueva orden
-                        </a>
+                        
                     </div>
                 </div>
             </div>
         </div>
+        <script type="module" src="../js/client.js"></script>
+        <script type="module" src="../js/home.js"></script>
     </body>
 </html>
